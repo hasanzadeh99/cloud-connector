@@ -1,13 +1,21 @@
 #include <ESP8266WiFi.h>
-
-
-void setup(){
-  Serial.begin(115200);
-  Serial.println();
-  Serial.print("ESP Board MAC Address:  ");
-  Serial.println(WiFi.macAddress());
+// WiFi parameters
+const char* ssid = "**";
+const char* password = "**";
+void setup(void)
+{
+// Start Serial
+Serial.begin(115200);
+// Connect to WiFi
+WiFi.begin(ssid, password);
+while (WiFi.status() != WL_CONNECTED) {
+delay(500);
+Serial.print(".");
 }
- 
-void loop(){
-
+Serial.println("");
+Serial.println("WiFi connected");
+// Print the IP address
+Serial.println(WiFi.localIP());
+}
+void loop() {
 }
